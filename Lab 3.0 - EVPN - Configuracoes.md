@@ -20,21 +20,19 @@ interface LoopBack0
  ip address 10.0.1.1 32
 quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.1 30
-quit
+ quit
 
 ospf 1 router-id 10.0.1.1
  area 0.0.0.0
 
-interface GigabitEthernet 3/0/0
-
-ospf enable 1 area 0.0.0.0
+interface GigabitEthernet3/0/0
+ ospf enable 1 area 0.0.0.0
 
 interface LoopBack1
  ip address 10.1.1.1 32
-
-ospf enable 1 area 0.0.0.0
+ ospf enable 1 area 0.0.0.0
 ```
 
 ## PE2
@@ -46,11 +44,11 @@ interface LoopBack0
  ip address 10.0.2.2 32
 quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.2 30
 quit
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  ip address 10.0.0.9 30
 quit
 
@@ -64,7 +62,7 @@ interface LoopBack0
  isis enable 1
 quit
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
 quit
@@ -74,7 +72,7 @@ mpls lsr-id 10.0.2.2
 mpls
  mpls ldp
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  mpls
  mpls ldp
 
@@ -88,13 +86,13 @@ bgp 65100
 
 ip vpn-instance vpna
  ipv4-family
- route-distinguisher 10:20
- apply-label per-instance
- vpn-target 10:26 export-extcommunity evpn
- vpn-target 10:624 import-extcommunity evpn
- evpn mpls routing-enable
+  route-distinguisher 10:20
+  apply-label per-instance
+  vpn-target 10:26 export-extcommunity evpn
+  vpn-target 10:624 import-extcommunity evpn
+  evpn mpls routing-enable
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip binding vpn-instance vpna
  ip address 10.0.0.2 255.255.255.252
 
@@ -102,18 +100,18 @@ ospf 1 router-id 10.0.2.2 vpn-instance vpna
  import-route bgp cost 20 type 2
  area 0.0.0.0
 
-interface GigabitEthernet 3/0/0
-
-ospf enable 1 area 0.0.0.0
+interface GigabitEthernet3/0/0
+ ospf enable 1 area 0.0.0.0
 
 ip ip-prefix Loopback1 index 10 permit 10.1.1.1 32
- route-policy O2B permit node 10
+
+route-policy O2B permit node 10
  if-match ip-prefix Loopback1
 
 bgp 65100
  ipv4-family vpn-instance vpna
- import-route ospf 1 route-policy O2B
- advertise l2vpn evpn
+  import-route ospf 1 route-policy O2B
+  advertise l2vpn evpn
 ```
 
 ## PE3
@@ -125,7 +123,7 @@ interface LoopBack0
  ip address 10.0.3.3 32
 quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.25 30
 quit
 
@@ -135,7 +133,7 @@ bgp 65003
 
 interface LoopBack1
  ip address 10.1.3.3 32
-quit
+ quit
 
 bgp 65003
  network 10.1.3.3 255.255.255.255
@@ -150,11 +148,11 @@ interface LoopBack0
  ip address 10.0.4.4 32
 quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.26 30
 quit
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  undo shutdown
  ip address 10.0.0.22 255.255.255.252
 quit
@@ -170,7 +168,7 @@ interface LoopBack0
  isis enable 1
 quit
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
 quit
@@ -180,7 +178,7 @@ mpls lsr-id 10.0.4.4
 mpls
  mpls ldp
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  mpls
  mpls ldp
 
@@ -194,13 +192,14 @@ bgp 65100
 
 ip vpn-instance vpna
  ipv4-family
- route-distinguisher 10:40
- vpn-target 10:46 export-extcommunity evpn
- vpn-target 10:624 import-extcommunity evpn
- evpn mpls routing-enable
+  route-distinguisher 10:40
+  vpn-target 10:46 export-extcommunity evpn
+  vpn-target 10:624 import-extcommunity evpn
+  evpn mpls routing-enable
+ quit
 quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip binding vpn-instance vpna
  ip address 10.0.0.26 255.255.255.252
 
@@ -220,11 +219,11 @@ interface LoopBack0
  ip address 10.0.5.5 32
 quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.13 30
 quit
 
-interface GigabitEthernet 3/0/0.1
+interface GigabitEthernet3/0/0.1
  vlan-type dot1q 10
  ip address 10.0.0.113 255.255.255.252
  quit
@@ -250,15 +249,15 @@ interface LoopBack0
  ip address 10.0.6.6 32
 quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.14 30
 quit
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  ip address 10.0.0.10 30
 quit
 
-interface GigabitEthernet 3/0/2
+interface GigabitEthernet3/0/2
  undo shutdown
  ip address 10.0.0.21 255.255.255.252
 
@@ -273,12 +272,12 @@ interface LoopBack0
  isis enable 1
 quit
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
 quit
 
-interface GigabitEthernet 3/0/2
+interface GigabitEthernet3/0/2
  isis enable 1
  isis circuit-type p2p
 quit
@@ -288,11 +287,11 @@ mpls lsr-id 10.0.6.6
 mpls
  mpls ldp
 
-interface GigabitEthernet 3/0/1
+interface GigabitEthernet3/0/1
  mpls
  mpls ldp
 
-interface GigabitEthernet 3/0/2
+interface GigabitEthernet3/0/2
  mpls
  mpls ldp
 quit
@@ -310,7 +309,7 @@ bgp 65100
   peer 10.0.4.4 enable
   peer 10.0.4.4 reflect-client
 
-interface GigabitEthernet 3/0/0.1
+interface GigabitEthernet3/0/0.1
  vlan-type dot1q 10
  ip address 10.0.0.114 255.255.255.252
  quit
@@ -331,14 +330,13 @@ ip vpn-instance vpna_out
   evpn mpls routing-enable
   quit
 
-interface GigabitEthernet 3/0/0
+interface GigabitEthernet3/0/0
  ip binding vpn-instance vpna_out
  ip address 10.0.0.14 255.255.255.252
-quit
+ quit
 
-interface GigabitEthernet 3/0/0.1
-
-vlan-type dot1q 10
+interface GigabitEthernet3/0/0.1
+ vlan-type dot1q 10
  ip binding vpn-instance vpna_in
  ip address 10.0.0.114 255.255.255.252
 
