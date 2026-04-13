@@ -15,15 +15,16 @@ Consolidação das linhas de configuração do laboratório, agrupadas por equip
 
 ```text
 system-view immediately
+
 undo pnp enable
 
 interface LoopBack0
  ip address 10.0.1.1 32
- quit
+quit
 
 interface GigabitEthernet3/0/0
  ip address 10.0.0.1 30
- quit
+quit
 
 ip route-static 10.0.2.2 32 10.0.0.2
 ```
@@ -37,7 +38,7 @@ bgp 65001
  peer 10.0.2.2 connect-interface LoopBack0
  peer 10.0.2.2 password cipher Huawei@123
  peer 10.0.2.2 valid-ttl-hops 255
- quit
+quit
 ```
 
 ### Redes de Serviço e Comunidade
@@ -45,31 +46,31 @@ bgp 65001
 ```text
 interface LoopBack1
  ip address 10.1.1.1 32
- quit
+quit
 
 interface LoopBack2
  ip address 10.2.1.1 32
- quit
+quit
 
 bgp 65001
  network 10.1.1.1 32
  network 10.2.1.1 32
  peer 10.0.2.2 advertise-community
- quit
+quit
 
 ip ip-prefix Com index 10 permit 10.1.1.1 32
 
-route-policy Attr permit node 10
+ route-policy Attr permit node 10
  if-match ip-prefix Com
  apply community 65001:1
- quit
+quit
 
-route-policy Attr permit node 100
- quit
+ route-policy Attr permit node 100
+quit
 
 bgp 65001
  peer 10.0.2.2 route-policy Attr export
- quit
+quit
 ```
 
 ## PE2
@@ -78,19 +79,20 @@ bgp 65001
 
 ```text
 system-view immediately
+
 undo pnp enable
 
 interface LoopBack0
  ip address 10.0.2.2 32
- quit
+quit
 
 interface GigabitEthernet3/0/0
  ip address 10.0.0.2 30
- quit
+quit
 
 interface GigabitEthernet3/0/1
  ip address 10.0.0.9 30
- quit
+quit
 
 ip route-static 10.0.1.1 32 10.0.0.1
 ```
@@ -100,16 +102,18 @@ ip route-static 10.0.1.1 32 10.0.0.1
 ```text
 ospf 1 router-id 10.0.2.2
  area 0.0.0.0
- quit
+quit
 quit
 
 interface LoopBack0
- ospf enable 1 area 0.0.0.0
- quit
+
+ospf enable 1 area 0.0.0.0
+quit
 
 interface GigabitEthernet3/0/1
- ospf enable 1 area 0.0.0.0
- quit
+
+ospf enable 1 area 0.0.0.0
+quit
 ```
 
 ### BGP de Borda e iBGP
@@ -126,30 +130,32 @@ bgp 65100
  peer 10.0.6.6 next-hop-local
  peer 10.0.6.6 advertise-community
  peer 10.0.1.1 advertise-community
- quit
+quit
 ```
 
 ### Política de Roteamento
 
 ```text
 ip community-filter basic OA index 10 permit 65002:1
+
 ip community-filter basic OA index 20 permit 65003:1
+
 ip as-path-filter Finance permit 65002$
 
-route-policy Finance permit node 10
+ route-policy Finance permit node 10
  if-match community-filter OA
- quit
+quit
 
-route-policy Finance deny node 20
+ route-policy Finance deny node 20
  if-match as-path-filter Finance
- quit
+quit
 
-route-policy Finance permit node 30
- quit
+ route-policy Finance permit node 30
+quit
 
 bgp 65100
  peer 10.0.1.1 route-policy Finance export
- quit
+quit
 ```
 
 ## PE3
@@ -158,15 +164,16 @@ bgp 65100
 
 ```text
 system-view immediately
+
 undo pnp enable
 
 interface LoopBack0
  ip address 10.0.3.3 32
- quit
+quit
 
 interface GigabitEthernet3/0/0
  ip address 10.0.0.25 30
- quit
+quit
 
 ip route-static 10.0.4.4 32 10.0.0.26
 ```
@@ -180,7 +187,7 @@ bgp 65002
  peer 10.0.4.4 connect-interface LoopBack0
  peer 10.0.4.4 password cipher Huawei@123
  peer 10.0.4.4 valid-ttl-hops 255
- quit
+quit
 ```
 
 ### Redes de Serviço e Comunidade
@@ -188,31 +195,31 @@ bgp 65002
 ```text
 interface LoopBack1
  ip address 10.1.3.3 32
- quit
+quit
 
 interface LoopBack2
  ip address 10.2.3.3 32
- quit
+quit
 
 bgp 65002
  network 10.1.3.3 32
  network 10.2.3.3 32
  peer 10.0.4.4 advertise-community
- quit
+quit
 
 ip ip-prefix Com index 10 permit 10.1.3.3 32
 
-route-policy Attr permit node 10
+ route-policy Attr permit node 10
  if-match ip-prefix Com
  apply community 65002:1
- quit
+quit
 
-route-policy Attr permit node 100
- quit
+ route-policy Attr permit node 100
+quit
 
 bgp 65002
  peer 10.0.4.4 route-policy Attr export
- quit
+quit
 ```
 
 ### Rota Adicional para Teste de ORF
@@ -220,11 +227,11 @@ bgp 65002
 ```text
 interface LoopBack3
  ip address 10.3.3.3 32
- quit
+quit
 
 bgp 65002
  network 10.3.3.3 32
- quit
+quit
 ```
 
 ## PE4
@@ -233,19 +240,20 @@ bgp 65002
 
 ```text
 system-view immediately
+
 undo pnp enable
 
 interface LoopBack0
  ip address 10.0.4.4 32
- quit
+quit
 
 interface GigabitEthernet3/0/0
  ip address 10.0.0.26 30
- quit
+quit
 
 interface GigabitEthernet3/0/1
  ip address 10.0.0.22 255.255.255.252
- quit
+quit
 
 ip route-static 10.0.3.3 32 10.0.0.25
 ```
@@ -255,16 +263,18 @@ ip route-static 10.0.3.3 32 10.0.0.25
 ```text
 ospf 1 router-id 10.0.4.4
  area 0.0.0.0
- quit
+quit
 quit
 
 interface LoopBack0
- ospf enable 1 area 0.0.0.0
- quit
+
+ospf enable 1 area 0.0.0.0
+quit
 
 interface GigabitEthernet3/0/1
- ospf enable 1 area 0.0.0.0
- quit
+
+ospf enable 1 area 0.0.0.0
+quit
 ```
 
 ### BGP de Borda e iBGP
@@ -281,30 +291,32 @@ bgp 65100
  peer 10.0.6.6 next-hop-local
  peer 10.0.6.6 advertise-community
  peer 10.0.3.3 advertise-community
- quit
+quit
 ```
 
 ### Política de Roteamento
 
 ```text
 ip community-filter basic OA index 10 permit 65001:1
+
 ip community-filter basic OA index 20 permit 65003:1
+
 ip as-path-filter Finance permit 65001$
 
-route-policy Finance permit node 10
+ route-policy Finance permit node 10
  if-match community-filter OA
- quit
+quit
 
-route-policy Finance deny node 20
+ route-policy Finance deny node 20
  if-match as-path-filter Finance
- quit
+quit
 
-route-policy Finance permit node 30
- quit
+ route-policy Finance permit node 30
+quit
 
 bgp 65100
  peer 10.0.3.3 route-policy Finance export
- quit
+quit
 ```
 
 ## P1
@@ -313,15 +325,16 @@ bgp 65100
 
 ```text
 system-view immediately
+
 undo pnp enable
 
 interface LoopBack0
  ip address 10.0.5.5 32
- quit
+quit
 
 interface GigabitEthernet3/0/0
  ip address 10.0.0.13 30
- quit
+quit
 
 ip route-static 10.0.6.6 32 10.0.0.14
 ```
@@ -335,7 +348,7 @@ bgp 65003
  peer 10.0.6.6 connect-interface LoopBack0
  peer 10.0.6.6 password cipher Huawei@123
  peer 10.0.6.6 valid-ttl-hops 255
- quit
+quit
 ```
 
 ### Redes de Serviço e Comunidade
@@ -343,45 +356,48 @@ bgp 65003
 ```text
 interface LoopBack1
  ip address 10.1.5.5 32
- quit
+quit
 
 interface LoopBack2
  ip address 10.2.5.5 32
- quit
+quit
 
 bgp 65003
  network 10.1.5.5 32
  network 10.2.5.5 32
  peer 10.0.6.6 advertise-community
- quit
+quit
 
 ip ip-prefix Com index 10 permit 10.1.5.5 32
 
-route-policy Attr permit node 10
+ route-policy Attr permit node 10
  if-match ip-prefix Com
  apply community 65003:1
- quit
+quit
 
-route-policy Attr permit node 100
- quit
+ route-policy Attr permit node 100
+quit
 
 bgp 65003
  peer 10.0.6.6 route-policy Attr export
- quit
+quit
 ```
 
 ### ORF
 
 ```text
 ip ip-prefix Branch index 10 permit 10.1.1.1 32
+
 ip ip-prefix Branch index 20 permit 10.2.1.1 32
+
 ip ip-prefix Branch index 30 permit 10.1.3.3 32
+
 ip ip-prefix Branch index 40 permit 10.2.3.3 32
 
 bgp 65003
  peer 10.0.6.6 ip-prefix Branch import
  peer 10.0.6.6 capability-advertise orf ip-prefix send
- quit
+quit
 ```
 
 ## P2
@@ -390,23 +406,24 @@ bgp 65003
 
 ```text
 system-view immediately
+
 undo pnp enable
 
 interface LoopBack0
  ip address 10.0.6.6 32
- quit
+quit
 
 interface GigabitEthernet3/0/0
  ip address 10.0.0.14 30
- quit
+quit
 
 interface GigabitEthernet3/0/1
  ip address 10.0.0.10 30
- quit
+quit
 
 interface GigabitEthernet3/0/2
  ip address 10.0.0.21 255.255.255.252
- quit
+quit
 
 ip route-static 10.0.5.5 32 10.0.0.13
 ```
@@ -416,20 +433,23 @@ ip route-static 10.0.5.5 32 10.0.0.13
 ```text
 ospf 1 router-id 10.0.6.6
  area 0.0.0.0
- quit
+quit
 quit
 
 interface LoopBack0
- ospf enable 1 area 0.0.0.0
- quit
+
+ospf enable 1 area 0.0.0.0
+quit
 
 interface GigabitEthernet3/0/1
- ospf enable 1 area 0.0.0.0
- quit
+
+ospf enable 1 area 0.0.0.0
+quit
 
 interface GigabitEthernet3/0/2
- ospf enable 1 area 0.0.0.0
- quit
+
+ospf enable 1 area 0.0.0.0
+quit
 ```
 
 ### BGP de Borda e RR
@@ -447,12 +467,12 @@ bgp 65100
  peer 10.0.2.2 group BB
  peer 10.0.4.4 group BB
  ipv4-family unicast
-  peer BB reflect-client
- quit
+ peer BB reflect-client
+quit
  peer 10.0.5.5 advertise-community
  peer BB advertise-community
  peer 10.0.5.5 capability-advertise orf ip-prefix receive
- quit
+quit
 ```
 
 ## Resumo de Endereços Loopback
