@@ -2,6 +2,10 @@
 
 Consolidação das configurações do laboratório, sem repetições, organizada por equipamento e por etapa do roteiro.
 
+## Topologia
+
+![Topologia do Lab 4.0 - VXLAN](./Lab%204.0%20-%20VXLAN%20-%20Topologia.png)
+
 ## Como usar este arquivo
 
 - `Base comum`: aplicar em qualquer uma das etapas do Lab 4.0.
