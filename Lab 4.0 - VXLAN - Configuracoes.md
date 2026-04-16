@@ -22,7 +22,7 @@ Consolidação das configurações do laboratório, sem repetições, organizada
 ```text
 vlan 12
 
-interface GigabitEthernet1/0/1
+interface GE1/0/1
  port link-type trunk
  port trunk allow-pass vlan 12
 quit
@@ -51,11 +51,11 @@ quit
 
 vcmp role silent
 
-interface GigabitEthernet1/0/10
+interface GE1/0/10
  port link-type trunk
 quit
 
-interface GigabitEthernet1/0/10.100 mode l2
+interface GE1/0/10.100 mode l2
  encapsulation dot1q vid 100
  bridge-domain 10
 quit
@@ -75,11 +75,11 @@ quit
 
 vcmp role silent
 
-interface GigabitEthernet1/0/10
+interface GE1/0/10
  port link-type trunk
 quit
 
-interface GigabitEthernet1/0/10.100 mode l2
+interface GE1/0/10.100 mode l2
  encapsulation dot1q vid 100
  bridge-domain 10
 quit
@@ -105,11 +105,11 @@ quit
 
 vcmp role silent
 
-interface GigabitEthernet1/0/10
+interface GE1/0/10
  port link-type trunk
 quit
 
-interface GigabitEthernet1/0/10.100 mode l2
+interface GE1/0/10.100 mode l2
  encapsulation dot1q vid 100
  bridge-domain 10
 quit
@@ -181,12 +181,12 @@ quit
 ```text
 vlan batch 12 23
 
-interface GigabitEthernet1/0/9
+interface GE1/0/9
  port link-type trunk
  port trunk allow-pass vlan 12
 quit
 
-interface GigabitEthernet1/0/10
+interface GE1/0/10
  port link-type trunk
  port trunk allow-pass vlan 23
 quit
@@ -252,7 +252,7 @@ Sem configuração adicional no `Border` além da `Base comum`.
 ```text
 vlan 23
 
-interface GigabitEthernet1/0/1
+interface GE1/0/1
  port link-type trunk
  port trunk allow-pass vlan 23
 quit
@@ -281,11 +281,11 @@ quit
 
 vcmp role silent
 
-interface GigabitEthernet1/0/10
+interface GE1/0/10
  port link-type trunk
 quit
 
-interface GigabitEthernet1/0/10.100 mode l2
+interface GE1/0/10.100 mode l2
  encapsulation dot1q vid 100
  bridge-domain 10
 quit
@@ -305,11 +305,11 @@ quit
 
 vcmp role silent
 
-interface GigabitEthernet1/0/10
+interface GE1/0/10
  port link-type trunk
 quit
 
-interface GigabitEthernet1/0/10.200 mode l2
+interface GE1/0/10.200 mode l2
  encapsulation dot1q vid 200
  bridge-domain 20
 quit
@@ -335,16 +335,16 @@ quit
 
 vcmp role silent
 
-interface GigabitEthernet1/0/10
+interface GE1/0/10
  port link-type trunk
 quit
 
-interface GigabitEthernet1/0/10.100 mode l2
+interface GE1/0/10.100 mode l2
  encapsulation dot1q vid 100
  bridge-domain 10
 quit
 
-interface GigabitEthernet1/0/10.200 mode l2
+interface GE1/0/10.200 mode l2
  encapsulation dot1q vid 200
  bridge-domain 20
 quit
@@ -418,12 +418,12 @@ quit
 ```text
 vlan 100
 
-interface GigabitEthernet1/0/0
+interface GE1/0/0
  port link-type access
  port default vlan 100
 quit
 
-interface GigabitEthernet1/0/1
+interface GE1/0/1
  port link-type trunk
  port trunk allow-pass vlan 100
 quit
@@ -434,12 +434,12 @@ quit
 ```text
 vlan batch 100 200
 
-interface GigabitEthernet1/0/0
+interface GE1/0/0
  port link-type access
  port default vlan 100
 quit
 
-interface GigabitEthernet1/0/1
+interface GE1/0/1
  port link-type trunk
  port trunk allow-pass vlan 100 200
 quit
@@ -452,12 +452,12 @@ quit
 ```text
 vlan 100
 
-interface GigabitEthernet1/0/9
+interface GE1/0/9
  port link-type access
  port default vlan 100
 quit
 
-interface GigabitEthernet1/0/1
+interface GE1/0/1
  port link-type trunk
  port trunk allow-pass vlan 100
 quit
@@ -468,12 +468,12 @@ quit
 ```text
 vlan 200
 
-interface GigabitEthernet1/0/9
+interface GE1/0/9
  port link-type access
  port default vlan 200
 quit
 
-interface GigabitEthernet1/0/1
+interface GE1/0/1
  port link-type trunk
  port trunk allow-pass vlan 200
 quit
@@ -484,12 +484,12 @@ quit
 ```text
 vlan batch 100 200
 
-interface GigabitEthernet1/0/9
+interface GE1/0/9
  port link-type access
  port default vlan 200
 quit
 
-interface GigabitEthernet1/0/1
+interface GE1/0/1
  port link-type trunk
  port trunk allow-pass vlan 100 200
 quit
