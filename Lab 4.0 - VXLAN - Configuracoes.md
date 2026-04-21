@@ -6,13 +6,17 @@ Consolidação das configurações do laboratório, sem repetições, organizada
 
 ![Topologia do Lab 4.0 - VXLAN](./Lab%204.0%20-%20VXLAN%20-%20Topologia.png)
 
+### Topologia EVPN da Etapa 3
+
+![Topologia EVPN da Etapa 3](./Lab%204.0%20-%20VXLAN%20-%20Topologia%20-%20EVPN.png)
+
 ## Como usar este arquivo
 
 - `Base comum`: aplicar em qualquer uma das etapas do Lab 4.0.
 - `Etapa 1`: VXLAN estático para extensão L2 entre `Edge_1` e `Edge_2`.
 - `Etapa 2`: gateway VXLAN centralizado com `Border` fazendo o papel de gateway.
 - `Etapa 3`: gateway VXLAN distribuído com EVPN/IRB entre `Edge_1` e `Edge_2`.
-- Para a `Etapa 3`, consulte também a imagem ![`Lab 4.0 - VXLAN - Topologia - EVPN.png`](./Lab%204.0%20-%20VXLAN%20-%20Topologia%20-%20EVPN.png).
+- Para a `Etapa 3`, consulte também a [Topologia EVPN da Etapa 3](#topologia-evpn-da-etapa-3).
 - As etapas abaixo foram tratadas como cenários independentes do roteiro original. Por isso, os blocos específicos de cada etapa devem ser aplicados sobre a `Base comum`, e não uns sobre os outros.
 - Comandos de verificação, `ping`, `display`, `capture-packet`, ACL temporária para captura e descrições explicativas do roteiro foram omitidos.
 
@@ -92,6 +96,8 @@ quit
 ```
 
 ### Etapa 3 - Gateway distribuído com EVPN
+
+Na `Etapa 3`, as interfaces `GE1/0/1` e `GE1/0/10` usadas na `Etapa 1` foram substituídas por `GigabitEthernet3/0/1` e `GigabitEthernet3/0/9`, respectivamente. Consulte a [Topologia EVPN da Etapa 3](#topologia-evpn-da-etapa-3).
 
 ```text
 vlan 12
@@ -343,6 +349,8 @@ quit
 ```
 
 ### Etapa 3 - Gateway distribuído com EVPN
+
+Na `Etapa 3`, as interfaces `GE1/0/1` e `GE1/0/10` usadas na `Etapa 1` foram substituídas por `GigabitEthernet3/0/1` e `GigabitEthernet3/0/9`, respectivamente. Consulte a [Topologia EVPN da Etapa 3](#topologia-evpn-da-etapa-3).
 
 ```text
 vlan 23
