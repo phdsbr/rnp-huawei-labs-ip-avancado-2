@@ -12,6 +12,7 @@ Consolidação das configurações do laboratório, sem repetições, organizada
 - `Etapa 1`: VXLAN estático para extensão L2 entre `Edge_1` e `Edge_2`.
 - `Etapa 2`: gateway VXLAN centralizado com `Border` fazendo o papel de gateway.
 - `Etapa 3`: gateway VXLAN distribuído com EVPN/IRB entre `Edge_1` e `Edge_2`.
+- Para a `Etapa 3`, consulte também a imagem ![`Lab 4.0 - VXLAN - Topologia - EVPN.png`](./Lab%204.0%20-%20VXLAN%20-%20Topologia%20-%20EVPN.png).
 - As etapas abaixo foram tratadas como cenários independentes do roteiro original. Por isso, os blocos específicos de cada etapa devem ser aplicados sobre a `Base comum`, e não uns sobre os outros.
 - Comandos de verificação, `ping`, `display`, `capture-packet`, ACL temporária para captura e descrições explicativas do roteiro foram omitidos.
 
@@ -93,6 +94,28 @@ quit
 ### Etapa 3 - Gateway distribuído com EVPN
 
 ```text
+vlan 12
+
+interface GigabitEthernet3/0/1
+ portswitch
+ port link-type trunk
+ port trunk allow-pass vlan 12
+quit
+
+interface Vlanif12
+ ip address 10.0.12.1 255.255.255.0
+quit
+
+interface LoopBack0
+ ip address 10.0.1.1 255.255.255.255
+quit
+
+ospf 1 router-id 10.0.1.1
+ area 0.0.0.0
+  network 10.0.1.1 0.0.0.0
+  network 10.0.12.0 0.0.0.255
+quit
+
 bridge-domain 10
  vxlan vni 1000
  evpn binding vpn-instance Edge_1_BD_10
@@ -103,16 +126,19 @@ bridge-domain 20
  evpn binding vpn-instance Edge_1_BD_20
 quit
 
-vcmp role silent
-
-interface GE1/0/10
+interface GigabitEthernet3/0/9
+ portswitch
  port link-type trunk
 quit
-
-interface GE1/0/10.100 mode l2
+#
+interface GigabitEthernet3/0/9.100 mode l2
  encapsulation dot1q vid 100
+ rewrite pop single
  bridge-domain 10
-quit
+#
+interface Vbdif10                          
+ ip address 10.10.10.1 255.255.255.0
+#
 
 interface Nve1
  source 10.0.1.1
@@ -279,8 +305,6 @@ bridge-domain 10
  vxlan vni 1000
 quit
 
-vcmp role silent
-
 interface GE1/0/10
  port link-type trunk
 quit
@@ -303,8 +327,6 @@ bridge-domain 20
  vxlan vni 2000
 quit
 
-vcmp role silent
-
 interface GE1/0/10
  port link-type trunk
 quit
@@ -323,6 +345,28 @@ quit
 ### Etapa 3 - Gateway distribuído com EVPN
 
 ```text
+vlan 23
+
+interface GigabitEthernet3/0/1
+ portswitch
+ port link-type trunk
+ port trunk allow-pass vlan 23
+quit
+
+interface Vlanif23
+ ip address 10.0.23.3 255.255.255.0
+quit
+
+interface LoopBack0
+ ip address 10.0.3.3 255.255.255.255
+quit
+
+ospf 1 router-id 10.0.3.3
+ area 0.0.0.0
+  network 10.0.3.3 0.0.0.0
+  network 10.0.23.0 0.0.0.255
+quit
+
 bridge-domain 10
  vxlan vni 1000
  evpn binding vpn-instance Edge_2_BD_10
@@ -335,17 +379,20 @@ quit
 
 vcmp role silent
 
-interface GE1/0/10
+interface GigabitEthernet3/0/9
+ portswitch
  port link-type trunk
 quit
 
-interface GE1/0/10.100 mode l2
+interface GigabitEthernet3/0/9.100 mode l2
  encapsulation dot1q vid 100
+ rewrite pop single
  bridge-domain 10
 quit
 
-interface GE1/0/10.200 mode l2
+interface GigabitEthernet3/0/9.200 mode l2
  encapsulation dot1q vid 200
+ rewrite pop single
  bridge-domain 20
 quit
 
@@ -418,7 +465,7 @@ quit
 ```text
 vlan 100
 
-interface GE1/0/0
+interface GE1/0/10
  port link-type access
  port default vlan 100
 quit
@@ -434,7 +481,7 @@ quit
 ```text
 vlan batch 100 200
 
-interface GE1/0/0
+interface GE1/0/10
  port link-type access
  port default vlan 100
 quit
@@ -500,3 +547,5 @@ quit
 
 ip route-static 192.168.200.0 255.255.255.0 192.168.100.254
 ```
+
+
