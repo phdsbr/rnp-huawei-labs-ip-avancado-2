@@ -124,11 +124,13 @@ quit
 
 bridge-domain 10
  vxlan vni 1000
+ split-horizon enable 
  evpn binding vpn-instance Edge_1_BD_10
 quit
 
 bridge-domain 20
  vxlan vni 2000
+ split-horizon enable 
  evpn binding vpn-instance Edge_1_BD_20
 quit
 
@@ -377,11 +379,13 @@ quit
 
 bridge-domain 10
  vxlan vni 1000
+ split-horizon enable 
  evpn binding vpn-instance Edge_2_BD_10
 quit
 
 bridge-domain 20
  vxlan vni 2000
+ split-horizon enable 
  evpn binding vpn-instance Edge_2_BD_20
 quit
 
