@@ -1,4 +1,4 @@
-﻿# Lab 5.0 - SR-MPLS
+# Lab 5.0 - SR-MPLS
 
 Consolidação das linhas de configuração do laboratório, reorganizadas por etapa e por equipamento.
 
@@ -20,11 +20,11 @@ interface LoopBack0
  ip address 10.0.1.1 32
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.1 30
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ip address 10.0.0.5 30
  quit
 
@@ -39,12 +39,12 @@ interface LoopBack0
  isis enable 1
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
  quit
@@ -101,11 +101,11 @@ interface LoopBack0
  ip address 10.0.2.2 32
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.2 30
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ip address 10.0.0.9 30
  quit
 
@@ -120,12 +120,12 @@ interface LoopBack0
  isis enable 1
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
  quit
@@ -166,11 +166,11 @@ interface LoopBack0
  ip address 10.0.3.3 32
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.25 30
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ip address 10.0.0.18 30
  quit
 
@@ -185,12 +185,12 @@ interface LoopBack0
  isis enable 1
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
  quit
@@ -231,11 +231,11 @@ interface LoopBack0
  ip address 10.0.4.4 32
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.26 30
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  undo shutdown
  ip address 10.0.0.22 255.255.255.252
  quit
@@ -251,12 +251,12 @@ interface LoopBack0
  isis enable 1
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
  quit
@@ -313,15 +313,15 @@ interface LoopBack0
  ip address 10.0.5.5 32
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.13 30
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ip address 10.0.0.6 30
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  ip address 10.0.0.17 30
  quit
 
@@ -336,17 +336,17 @@ interface LoopBack0
  isis enable 1
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  isis enable 1
  isis circuit-type p2p
  quit
@@ -398,15 +398,15 @@ interface LoopBack0
  ip address 10.0.6.6 32
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ip address 10.0.0.14 30
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ip address 10.0.0.10 30
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  undo shutdown
  ip address 10.0.0.21 255.255.255.252
  quit
@@ -422,17 +422,17 @@ interface LoopBack0
  isis enable 1
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  isis enable 1
  isis circuit-type p2p
  quit
