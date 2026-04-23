@@ -86,6 +86,9 @@ bgp 65100
   peer 10.0.6.6 enable
  quit
 
+#### PAREI AQUI
+
+
 bgp 65100
  ipv4-family vpn-instance vpna
   import-route direct
@@ -144,6 +147,9 @@ isis 1
 interface LoopBack0
  isis prefix-sid index 2
  quit
+
+#### PAREI AQUI
+
 
 bgp 65100
  router-id 10.0.2.2
@@ -275,6 +281,7 @@ isis 1
 interface LoopBack0
  isis prefix-sid index 4
  quit
+
 
 ip vpn-instance vpna
  ipv4-family
@@ -477,13 +484,38 @@ bgp 65100
 
 ## Etapa 2 - Adj-SIDs e Túneis SR-TE por Explicit Path
 
+### Ajustes de Configuração Apresentados pelo Professor Durante a Aula
+
+```text
+! PE1
+
+
+
+
+
+! Criar o tunel primeiro e depois aplicar
+tunnel-policy p1
+ tunnel select-seq sr-te load-balance-number 1
+ quit
+
+ip vpn-instance vpna
+ ipv4-family
+  tnl-policy p1
+ quit
+
+! Ativar MPLS TE em PE1 e PE4
+mpls
+ mpls te
+ quit
+```
+
 ### P1
 
 ```text
 segment-routing
- ipv4 adjacency local-ip-addr 10.0.0.6 remote-ip-addr 10.0.0.5 sid 142336
- ipv4 adjacency local-ip-addr 10.0.0.13 remote-ip-addr 10.0.0.14 sid 142337
- ipv4 adjacency local-ip-addr 10.0.0.17 remote-ip-addr 10.0.0.18 sid 142338
+ ipv4 adjacency local-ip-addr 10.0.0.6 remote-ip-addr 10.0.0.5 sid 321536
+ ipv4 adjacency local-ip-addr 10.0.0.13 remote-ip-addr 10.0.0.14 sid 321537
+ ipv4 adjacency local-ip-addr 10.0.0.17 remote-ip-addr 10.0.0.18 sid 321538
  quit
 ```
 
@@ -491,9 +523,9 @@ segment-routing
 
 ```text
 segment-routing
- ipv4 adjacency local-ip-addr 10.0.0.10 remote-ip-addr 10.0.0.9 sid 142336
- ipv4 adjacency local-ip-addr 10.0.0.14 remote-ip-addr 10.0.0.13 sid 142337
- ipv4 adjacency local-ip-addr 10.0.0.21 remote-ip-addr 10.0.0.22 sid 142338
+ ipv4 adjacency local-ip-addr 10.0.0.10 remote-ip-addr 10.0.0.9  sid 321536
+ ipv4 adjacency local-ip-addr 10.0.0.14 remote-ip-addr 10.0.0.13 sid 321537
+ ipv4 adjacency local-ip-addr 10.0.0.21 remote-ip-addr 10.0.0.22 sid 321538
  quit
 ```
 
@@ -502,8 +534,8 @@ segment-routing
 ```text
 explicit-path PE1_PE4_Manual
  next sid label 16005 type prefix
- next sid label 142337 type adjacency
- next sid label 142338 type adjacency
+ next sid label 321537 type adjacency 
+ next sid label 321538 type adjacency 
  quit
 
 mpls
@@ -519,13 +551,13 @@ interface Tunnel10
  mpls te path explicit-path PE1_PE4_Manual
  quit
 
+tunnel-policy p1
+ tunnel select-seq sr-te load-balance-number 1
+ quit
+
 ip vpn-instance vpna
  ipv4-family
   tnl-policy p1
- quit
-
-tunnel-policy p1
- tunnel select-seq sr-te load-balance-number 1
  quit
 ```
 
@@ -533,10 +565,9 @@ tunnel-policy p1
 
 ```text
 explicit-path PE4_PE1_Manual
- next sid label 16003 type prefix
  next sid label 16005 type prefix
- next sid label 142337 type adjacency
- next sid label 142336 type adjacency
+ next sid label 321537 type adjacency 
+ next sid label 321536 type adjacency 
  next sid label 16001 type prefix
  quit
 
@@ -553,13 +584,13 @@ interface Tunnel10
  mpls te path explicit-path PE4_PE1_Manual
  quit
 
+tunnel-policy p1
+ tunnel select-seq sr-te load-balance-number 1
+ quit
+
 ip vpn-instance vpna
  ipv4-family
   tnl-policy p1
- quit
-
-tunnel-policy p1
- tunnel select-seq sr-te load-balance-number 1
  quit
 ```
 
