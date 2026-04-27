@@ -1,4 +1,4 @@
-﻿# Lab 6.0 - SRv6
+# Lab 6.0 - SRv6
 
 Consolidação das linhas de configuração do laboratório, reorganizadas por fase e por equipamento.
 
@@ -17,7 +17,7 @@ Consolidação das linhas de configuração do laboratório, reorganizadas por f
 system-view immediately
 undo dcn
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::9/126
  quit
@@ -35,7 +35,7 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -86,12 +86,12 @@ isis 1
 ```text
 system-view immediately
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::a/126
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  ipv6 enable
  ipv6 address 2001::15/126
  quit
@@ -109,12 +109,12 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -145,7 +145,7 @@ bgp 65100
 ```text
 system-view immediately
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::16/126
  quit
@@ -163,7 +163,7 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -222,12 +222,12 @@ interface LoopBack0
  ipv6 address 2001::1:1/128
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ipv6 enable
  ipv6 address 2001::1/126
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::5/126
  quit
@@ -241,12 +241,12 @@ isis 1
  segment-routing ipv6 locator SRv6 auto-sid-disable
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -372,12 +372,12 @@ interface LoopBack0
  ipv6 address 2001::2:2/128
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ipv6 enable
  ipv6 address 2001::2/126
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::9/126
  quit
@@ -390,12 +390,12 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -419,12 +419,12 @@ interface LoopBack0
  ipv6 address 2001::3:3/128
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ipv6 enable
  ipv6 address 2001::19/126
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::12/126
  quit
@@ -437,12 +437,12 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -466,12 +466,12 @@ interface LoopBack0
  ipv6 address 2001::4:4/128
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ipv6 enable
  ipv6 address 2001::1a/126
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::16/126
  quit
@@ -484,12 +484,12 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -615,17 +615,17 @@ interface LoopBack0
  ipv6 address 2001::5:5/128
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ipv6 enable
  ipv6 address 2001::d/126
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::6/126
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  ipv6 enable
  ipv6 address 2001::11/126
  quit
@@ -638,17 +638,17 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
@@ -688,17 +688,17 @@ interface LoopBack0
  ipv6 address 2001::6:6/128
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  ipv6 enable
  ipv6 address 2001::e/126
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  ipv6 enable
  ipv6 address 2001::a/126
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  ipv6 enable
  ipv6 address 2001::15/126
  quit
@@ -711,17 +711,17 @@ isis 1
  ipv6 enable topology ipv6
  quit
 
-interface GigabitEthernet0/5/0
+interface GigabitEthernet3/0/0
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/1
+interface GigabitEthernet3/0/1
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
 
-interface GigabitEthernet0/5/2
+interface GigabitEthernet3/0/2
  isis ipv6 enable 1
  isis circuit-type p2p
  quit
