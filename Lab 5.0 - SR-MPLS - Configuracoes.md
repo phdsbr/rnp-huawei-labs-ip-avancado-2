@@ -484,31 +484,6 @@ bgp 65100
 
 ## Etapa 2 - Adj-SIDs e Túneis SR-TE por Explicit Path
 
-### Ajustes de Configuração Apresentados pelo Professor Durante a Aula
-
-```text
-! PE1
-
-
-
-
-
-! Criar o tunel primeiro e depois aplicar
-tunnel-policy p1
- tunnel select-seq sr-te load-balance-number 1
- quit
-
-ip vpn-instance vpna
- ipv4-family
-  tnl-policy p1
- quit
-
-! Ativar MPLS TE em PE1 e PE4
-mpls
- mpls te
- quit
-```
-
 ### P1
 
 ```text
@@ -602,20 +577,20 @@ ip vpn-instance vpna
 segment-routing
  segment-list PE1_PE4_1
   index 10 sid label 16005
-  index 20 sid label 142338
+  index 20 sid label 321538
   index 30 sid label 16004
  quit
 
  segment-list PE1_PE4_2
   index 10 sid label 16005
-  index 20 sid label 142337
-  index 30 sid label 142338
+  index 20 sid label 321537
+  index 30 sid label 321538
  quit
 
  segment-list PE1_PE4_3
   index 10 sid label 16002
   index 20 sid label 16006
-  index 30 sid label 142338
+  index 30 sid label 321538
  quit
 
  sr-te policy p1 endpoint 10.0.4.4 color 100
@@ -646,18 +621,18 @@ segment-routing
  segment-list PE4_PE1_1
   index 10 sid label 16003
   index 20 sid label 16005
-  index 30 sid label 142336
+  index 30 sid label 321536
  quit
 
  segment-list PE4_PE1_2
   index 10 sid label 16006
-  index 20 sid label 142337
-  index 30 sid label 142336
+  index 20 sid label 321537
+  index 30 sid label 321536
  quit
 
  segment-list PE4_PE1_3
   index 10 sid label 16006
-  index 20 sid label 142336
+  index 20 sid label 321536
   index 30 sid label 16001
  quit
 
