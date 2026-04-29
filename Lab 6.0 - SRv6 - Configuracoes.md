@@ -316,7 +316,7 @@ bgp 65100
 segment-routing ipv6
  encapsulation source-address 2001::1:1
  locator SRv6 ipv6-prefix 2001:1:: 96 static 16
-  opcode ::1 end
+  opcode ::1 end no-flavor
   opcode ::11 end-dt4 vpn-instance vpna evpn
   opcode ::61 end-dt6 vpn-instance vpna6 evpn
  quit
@@ -350,8 +350,8 @@ segment-routing ipv6
   quit
  quit
 
- tunnel-policy p1
-  tunnel select-seq ipv6 srv6-te-policy load-balance-number 1
+tunnel-policy p1
+ tunnel select-seq ipv6 srv6-te-policy load-balance-number 1
  quit
 
 segment-routing ipv6
@@ -388,6 +388,7 @@ isis 1
  network-entity 49.0001.0002.0002.0002.00
  is-name PE2
  ipv6 enable topology ipv6
+ segment-routing ipv6 locator SRv6 auto-sid-disable
  quit
 
 interface GigabitEthernet3/0/0
@@ -407,7 +408,7 @@ interface LoopBack0
 segment-routing ipv6
  encapsulation source-address 2001::2:2
  locator SRv6 ipv6-prefix 2001:2:: 96 static 16
-  opcode ::1 end
+  opcode ::1 end no-flavor
  quit
 ```
 
@@ -435,6 +436,7 @@ isis 1
  network-entity 49.0001.0003.0003.0003.00
  is-name PE3
  ipv6 enable topology ipv6
+ segment-routing ipv6 locator SRv6 auto-sid-disable
  quit
 
 interface GigabitEthernet3/0/0
@@ -454,7 +456,7 @@ interface LoopBack0
 segment-routing ipv6
  encapsulation source-address 2001::3:3
  locator SRv6 ipv6-prefix 2001:3:: 96 static 16
-  opcode ::1 end
+  opcode ::1 end no-flavor
  quit
 ```
 
@@ -482,6 +484,7 @@ isis 1
  network-entity 49.0001.0004.0004.0004.00
  is-name PE4
  ipv6 enable topology ipv6
+ segment-routing ipv6 locator SRv6 auto-sid-disable
  quit
 
 interface GigabitEthernet3/0/0
@@ -559,7 +562,7 @@ bgp 65100
 segment-routing ipv6
  encapsulation source-address 2001::4:4
  locator SRv6 ipv6-prefix 2001:4:: 96 static 16
-  opcode ::1 end
+  opcode ::1 end no-flavor
   opcode ::44 end-dt4 vpn-instance vpna evpn
   opcode ::64 end-dt6 vpn-instance vpna6 evpn
  quit
@@ -593,8 +596,8 @@ segment-routing ipv6
   quit
  quit
 
- tunnel-policy p1
-  tunnel select-seq ipv6 srv6-te-policy load-balance-number 1
+tunnel-policy p1
+ tunnel select-seq ipv6 srv6-te-policy load-balance-number 1
  quit
 
 segment-routing ipv6
@@ -636,6 +639,7 @@ isis 1
  network-entity 49.0001.0005.0005.0005.00
  is-name P1
  ipv6 enable topology ipv6
+ segment-routing ipv6 locator SRv6 auto-sid-disable
  quit
 
 interface GigabitEthernet3/0/0
@@ -676,7 +680,7 @@ bgp 65100
 segment-routing ipv6
  encapsulation source-address 2001::5:5
  locator SRv6 ipv6-prefix 2001:5:: 96 static 16
-  opcode ::1 end
+  opcode ::1 end no-flavor
  quit
 ```
 
@@ -709,6 +713,7 @@ isis 1
  network-entity 49.0001.0006.0006.0006.00
  is-name P2
  ipv6 enable topology ipv6
+ segment-routing ipv6 locator SRv6 auto-sid-disable
  quit
 
 interface GigabitEthernet3/0/0
@@ -749,6 +754,6 @@ bgp 65100
 segment-routing ipv6
  encapsulation source-address 2001::6:6
  locator SRv6 ipv6-prefix 2001:6:: 96 static 16
-  opcode ::1 end
+  opcode ::1 end no-flavor
  quit
 ```
